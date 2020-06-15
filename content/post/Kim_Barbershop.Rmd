@@ -14,11 +14,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 1) P
 
-## 풀이과정
-```{r pressure, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("C:/Users/dhxog/Desktop/4-1학기/OR확률모델/SmartSelectImage_2020-06-04-01-35-00.png")
-```
-
 ```{r}
 P = matrix(c(0.2, 0.7, 0.07, 0.02, 0.01, 0,
              0.16, 0.6 , 0.196, 0.03 , 0.012, 0.002,
