@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Linear Regression</title>
+      <link>/2020/06/17/linear-regression/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/06/17/linear-regression/</guid>
+      <description>Cleaning dataairbnb 데이터를 활용해 선형회귀분석을 해보자
+Importing datalibrary(tidyverse)setwd(&amp;quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&amp;quot;)data &amp;lt;- readxl::read_xlsx(&amp;quot;airbnb.</description>
+    </item>
+    
+    <item>
       <title>Preprocessing &amp; EDA</title>
       <link>/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.72.0" />
+
+  <title>Linear Regression &middot; 오! 데이터 사이언스</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="Linear Regression">
+<meta itemprop="description" content="Cleaning dataairbnb 데이터를 활용해 선형회귀분석을 해보자
+Importing datalibrary(tidyverse)setwd(&quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&quot;)data &lt;- readxl::read_xlsx(&quot;airbnb.">
+<meta itemprop="datePublished" content="2020-06-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-06-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2465">
+
+
+
+<meta itemprop="keywords" content="Datamining,Machine Learning,R," />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linear Regression"/>
+<meta name="twitter:description" content="Cleaning dataairbnb 데이터를 활용해 선형회귀분석을 해보자
+Importing datalibrary(tidyverse)setwd(&quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&quot;)data &lt;- readxl::read_xlsx(&quot;airbnb."/>
+
+
+<meta property="og:title" content="Linear Regression" />
+<meta property="og:description" content="Cleaning dataairbnb 데이터를 활용해 선형회귀분석을 해보자
+Importing datalibrary(tidyverse)setwd(&quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&quot;)data &lt;- readxl::read_xlsx(&quot;airbnb." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2020/06/17/linear-regression/" />
+<meta property="article:published_time" content="2020-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-17T00:00:00+00:00" />
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+      
+
+      <h1>오! 데이터 사이언스</h1>
+
+      
+      <p class="lead">Oh! Blog</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+        </li><li>
+          <a href="https://github.com/dhxoghks95">GitHub</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1>Linear Regression</h1>
+
+  <div class="post-date">
+    <time datetime="2020-06-17T00:00:00Z">Jun 17, 2020</time> &middot; 12 min read
+  </div>
+
+  
+
+
+<div id="cleaning-data" class="section level1">
+<h1>Cleaning data</h1>
+<p>airbnb 데이터를 활용해 선형회귀분석을 해보자</p>
+<div id="importing-data" class="section level2">
+<h2>Importing data</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre class="r"><code>setwd(&quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&quot;)
+data &lt;- readxl::read_xlsx(&quot;airbnb.xlsx&quot;)
+summary(data)</code></pre>
+<pre><code>##        id             log_price     property_type       room_type        
+##  Min.   :     344   Min.   :0.000   Length:74111       Length:74111      
+##  1st Qu.: 6261964   1st Qu.:4.317   Class :character   Class :character  
+##  Median :12254147   Median :4.710   Mode  :character   Mode  :character  
+##  Mean   :11266617   Mean   :4.782                                        
+##  3rd Qu.:16402260   3rd Qu.:5.220                                        
+##  Max.   :21230903   Max.   :7.600                                        
+##                                                                          
+##   amenities          accommodates      bathrooms       bed_type        
+##  Length:74111       Min.   : 1.000   Min.   :0.000   Length:74111      
+##  Class :character   1st Qu.: 2.000   1st Qu.:1.000   Class :character  
+##  Mode  :character   Median : 2.000   Median :1.000   Mode  :character  
+##                     Mean   : 3.155   Mean   :1.235                     
+##                     3rd Qu.: 4.000   3rd Qu.:1.000                     
+##                     Max.   :16.000   Max.   :8.000                     
+##                                      NA&#39;s   :200                       
+##  cancellation_policy cleaning_fee        city           description       
+##  Length:74111        Mode :logical   Length:74111       Length:74111      
+##  Class :character    FALSE:19708     Class :character   Class :character  
+##  Mode  :character    TRUE :54403     Mode  :character   Mode  :character  
+##                                                                           
+##                                                                           
+##                                                                           
+##                                                                           
+##   first_review                 host_has_profile_pic host_identity_verified
+##  Min.   :1930-01-11 00:00:00   Length:74111         Length:74111          
+##  1st Qu.:2006-06-16 00:00:00   Class :character     Class :character      
+##  Median :2014-06-15 00:00:00   Mode  :character     Mode  :character      
+##  Mean   :2010-07-22 09:03:47                                              
+##  3rd Qu.:2021-09-17 00:00:00                                              
+##  Max.   :2029-12-16 00:00:00                                              
+##  NA&#39;s   :15864                                                            
+##  host_response_rate   host_since                  instant_bookable  
+##  Min.   :0.000      Min.   :1930-01-10 00:00:00   Length:74111      
+##  1st Qu.:1.000      1st Qu.:2007-02-10 12:00:00   Class :character  
+##  Median :1.000      Median :2014-07-13 00:00:00   Mode  :character  
+##  Mean   :0.944      Mean   :2011-02-11 15:13:38                     
+##  3rd Qu.:1.000      3rd Qu.:2022-01-14 12:00:00                     
+##  Max.   :1.000      Max.   :2029-12-16 00:00:00                     
+##  NA&#39;s   :18299      NA&#39;s   :188                                     
+##   last_review                     latitude       longitude      
+##  Min.   :1930-01-15 00:00:00   Min.   :33.34   Min.   :-122.51  
+##  1st Qu.:2006-06-14 00:00:00   1st Qu.:34.13   1st Qu.:-118.34  
+##  Median :2016-04-17 00:00:00   Median :40.66   Median : -77.00  
+##  Mean   :2010-01-08 15:39:02   Mean   :38.45   Mean   : -92.40  
+##  3rd Qu.:2023-04-17 00:00:00   3rd Qu.:40.75   3rd Qu.: -73.95  
+##  Max.   :2029-12-16 00:00:00   Max.   :42.39   Max.   : -70.99  
+##  NA&#39;s   :15827                                                  
+##      name           neighbourhood      number_of_reviews review_scores_rating
+##  Length:74111       Length:74111       Min.   :  0.0     Min.   : 20.00      
+##  Class :character   Class :character   1st Qu.:  1.0     1st Qu.: 92.00      
+##  Mode  :character   Mode  :character   Median :  6.0     Median : 96.00      
+##                                        Mean   : 20.9     Mean   : 94.07      
+##                                        3rd Qu.: 23.0     3rd Qu.:100.00      
+##                                        Max.   :605.0     Max.   :100.00      
+##                                                          NA&#39;s   :16722       
+##  thumbnail_url        zipcode             bedrooms           beds       
+##  Length:74111       Length:74111       Min.   : 0.000   Min.   : 0.000  
+##  Class :character   Class :character   1st Qu.: 1.000   1st Qu.: 1.000  
+##  Mode  :character   Mode  :character   Median : 1.000   Median : 1.000  
+##                                        Mean   : 1.266   Mean   : 1.711  
+##                                        3rd Qu.: 1.000   3rd Qu.: 2.000  
+##                                        Max.   :10.000   Max.   :18.000  
+##                                        NA&#39;s   :91       NA&#39;s   :131</code></pre>
+</div>
+<div id="changing-variables" class="section level2">
+<h2>Changing variables</h2>
+<div id="a.-number_of_reviews-11이상만" class="section level3">
+<h3>a. number_of_reviews 11이상만</h3>
+<pre class="r"><code>data &lt;- data %&gt;%
+  filter(data$number_of_reviews &gt;= 11)</code></pre>
+</div>
+<div id="b.-amenities를-를-기준으로-나누고-나뉜-갯수편의용품-갯수로-바꾸기" class="section level3">
+<h3>b. amenities를 “,”를 기준으로 나누고, 나뉜 갯수(편의용품 갯수)로 바꾸기</h3>
+<pre class="r"><code>temp &lt;- data$amenities %&gt;% strsplit(split = &quot;,&quot;) %&gt;% summary()
+data$amenities &lt;- as.numeric(temp[,1])</code></pre>
+</div>
+<div id="c.-가격비-변수-만들기" class="section level3">
+<h3>c. 가격비 변수 만들기</h3>
+<pre class="r"><code>mean_bycity = data %&gt;% 
+  group_by(city) %&gt;%
+  summarise(mbc = mean(exp(log_price)))</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>data &lt;- merge(data, mean_bycity)
+data = data %&gt;% 
+  mutate(priceratio = exp(log_price) / mbc * 100)</code></pre>
+</div>
+<div id="d.-회귀분석과-관련-없는-변수-or-y변수-생성에-쓰인-변수-등-빼기" class="section level3">
+<h3>d. 회귀분석과 관련 없는 변수 or y변수 생성에 쓰인 변수 등 빼기</h3>
+<pre class="r"><code>data = subset(data, select = c(-id,-log_price,
+-description, -first_review, -host_since, -last_review, -name,
+-neighbourhood, -thumbnail_url,-zipcode,-mbc ))</code></pre>
+</div>
+<div id="e.-na-다루기" class="section level3">
+<h3>e. NA 다루기</h3>
+<div id="일단-칼럼별-na의-비율을-구하자" class="section level4">
+<h4>일단 칼럼별 NA의 비율을 구하자</h4>
+<pre class="r"><code>nas = rep(0, length(data[1,]))
+for(i in 1:length(data[1,])){
+  nas[i] = sum(is.na(data[,i]))
+  colname = names(data)
+  print(paste(colname[i],  &quot;:&quot; , round(nas[i]/nrow(data)*100, digits = 2), &quot;%&quot;))
+} </code></pre>
+<pre><code>## [1] &quot;city : 0 %&quot;
+## [1] &quot;property_type : 0 %&quot;
+## [1] &quot;room_type : 0 %&quot;
+## [1] &quot;amenities : 0 %&quot;
+## [1] &quot;accommodates : 0 %&quot;
+## [1] &quot;bathrooms : 0.35 %&quot;
+## [1] &quot;bed_type : 0 %&quot;
+## [1] &quot;cancellation_policy : 0 %&quot;
+## [1] &quot;cleaning_fee : 0 %&quot;
+## [1] &quot;host_has_profile_pic : 0.22 %&quot;
+## [1] &quot;host_identity_verified : 0.22 %&quot;
+## [1] &quot;host_response_rate : 5.5 %&quot;
+## [1] &quot;instant_bookable : 0 %&quot;
+## [1] &quot;latitude : 0 %&quot;
+## [1] &quot;longitude : 0 %&quot;
+## [1] &quot;number_of_reviews : 0 %&quot;
+## [1] &quot;review_scores_rating : 0.08 %&quot;
+## [1] &quot;bedrooms : 0.14 %&quot;
+## [1] &quot;beds : 0.06 %&quot;
+## [1] &quot;priceratio : 0 %&quot;</code></pre>
+</div>
+</div>
+</div>
+<div id="na의-비율이-상당히-낮기-때문에-빼기로-결정" class="section level2">
+<h2>NA의 비율이 상당히 낮기 때문에 빼기로 결정</h2>
+<pre class="r"><code>data &lt;- data %&gt;% na.omit()</code></pre>
+<div id="f.-property_type-변환" class="section level3">
+<h3>f. property_type 변환</h3>
+<pre class="r"><code>data$property_type[data$property_type != &quot;Apartment&quot; &amp; data$property_type != &quot;House&quot;] = &quot;Other&quot;</code></pre>
+</div>
+<div id="g.-bed_type-변환" class="section level3">
+<h3>g. bed_type 변환</h3>
+<pre class="r"><code>data$bed_type[data$bed_type != &quot;Real Bed&quot;] = &quot;Other&quot;
+data$bed_type[data$bed_type == &quot;Real Bed&quot;] = &quot;Bed&quot;</code></pre>
+</div>
+<div id="h.-instant_bookable-변환" class="section level3">
+<h3>h. instant_bookable 변환</h3>
+<pre class="r"><code>data$instant_bookable[data$instant_bookable==&quot;t&quot;] = as.logical(TRUE)
+data$instant_bookable[data$instant_bookable==&quot;f&quot;] = as.logical(FALSE)
+data$instant_bookable &lt;- as.logical(data$instant_bookable)</code></pre>
+</div>
+<div id="i.-host_identity_verified-변환" class="section level3">
+<h3>i. host_identity_verified 변환</h3>
+<pre class="r"><code>data$host_identity_verified[data$host_identity_verified==&#39;t&#39;] = TRUE
+data$host_identity_verified[data$host_identity_verified==&#39;f&#39;] = FALSE
+data$host_identity_verified &lt;- as.logical(data$host_identity_verified)</code></pre>
+</div>
+<div id="j.-host_has_profile_pic-변환" class="section level3">
+<h3>j. host_has_profile_pic 변환</h3>
+<pre class="r"><code>data$host_has_profile_pic[data$host_has_profile_pic==&#39;t&#39;] = as.logical(TRUE)
+data$host_has_profile_pic[data$host_has_profile_pic==&#39;f&#39;] = as.logical(FALSE)
+data$host_has_profile_pic &lt;- as.logical(data$host_has_profile_pic)</code></pre>
+</div>
+</div>
+<div id="변환-결과" class="section level2">
+<h2>변환 결과</h2>
+<pre class="r"><code>str(data)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    27268 obs. of  20 variables:
+##  $ city                  : chr  &quot;Boston&quot; &quot;Boston&quot; &quot;Boston&quot; &quot;Boston&quot; ...
+##  $ property_type         : chr  &quot;House&quot; &quot;Apartment&quot; &quot;Apartment&quot; &quot;Apartment&quot; ...
+##  $ room_type             : chr  &quot;Entire home/apt&quot; &quot;Entire home/apt&quot; &quot;Entire home/apt&quot; &quot;Entire home/apt&quot; ...
+##  $ amenities             : num  28 22 20 20 16 15 24 7 18 18 ...
+##  $ accommodates          : num  10 2 3 5 1 4 2 1 2 6 ...
+##  $ bathrooms             : num  2.5 1 1 1 1 1 1 1 1 1 ...
+##  $ bed_type              : chr  &quot;Bed&quot; &quot;Bed&quot; &quot;Bed&quot; &quot;Bed&quot; ...
+##  $ cancellation_policy   : chr  &quot;strict&quot; &quot;strict&quot; &quot;moderate&quot; &quot;moderate&quot; ...
+##  $ cleaning_fee          : logi  TRUE TRUE TRUE TRUE FALSE TRUE ...
+##  $ host_has_profile_pic  : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
+##  $ host_identity_verified: logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
+##  $ host_response_rate    : num  1 1 1 1 1 0.88 1 1 1 1 ...
+##  $ instant_bookable      : logi  TRUE TRUE TRUE TRUE FALSE FALSE ...
+##  $ latitude              : num  42.4 42.4 42.4 42.4 42.3 ...
+##  $ longitude             : num  -71.1 -71.1 -71.1 -71 -71.1 ...
+##  $ number_of_reviews     : num  128 138 159 165 94 12 37 130 12 92 ...
+##  $ review_scores_rating  : num  98 93 96 91 91 87 93 97 70 95 ...
+##  $ bedrooms              : num  3 0 1 3 1 2 1 1 0 3 ...
+##  $ beds                  : num  9 1 2 3 1 2 1 1 1 4 ...
+##  $ priceratio            : num  229.5 114.8 104.3 98.4 23 ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int  3 8 26 31 88 97 145 225 290 313 ...
+##   ..- attr(*, &quot;names&quot;)= chr  &quot;3&quot; &quot;8&quot; &quot;26&quot; &quot;31&quot; ...</code></pre>
+<pre class="r"><code>summary(data)</code></pre>
+<pre><code>##      city           property_type       room_type           amenities   
+##  Length:27268       Length:27268       Length:27268       Min.   : 1.0  
+##  Class :character   Class :character   Class :character   1st Qu.:15.0  
+##  Mode  :character   Mode  :character   Mode  :character   Median :20.0  
+##                                                           Mean   :19.9  
+##                                                           3rd Qu.:23.0  
+##                                                           Max.   :77.0  
+##   accommodates      bathrooms      bed_type         cancellation_policy
+##  Min.   : 1.000   Min.   :0.00   Length:27268       Length:27268       
+##  1st Qu.: 2.000   1st Qu.:1.00   Class :character   Class :character   
+##  Median : 2.000   Median :1.00   Mode  :character   Mode  :character   
+##  Mean   : 3.424   Mean   :1.22                                         
+##  3rd Qu.: 4.000   3rd Qu.:1.00                                         
+##  Max.   :16.000   Max.   :8.00                                         
+##  cleaning_fee    host_has_profile_pic host_identity_verified host_response_rate
+##  Mode :logical   Mode :logical        Mode :logical          Min.   :0.0000    
+##  FALSE:4189      FALSE:24             FALSE:5838             1st Qu.:1.0000    
+##  TRUE :23079     TRUE :27244          TRUE :21430            Median :1.0000    
+##                                                              Mean   :0.9692    
+##                                                              3rd Qu.:1.0000    
+##                                                              Max.   :1.0000    
+##  instant_bookable    latitude       longitude       number_of_reviews
+##  Mode :logical    Min.   :33.34   Min.   :-122.51   Min.   : 11.00   
+##  FALSE:18879      1st Qu.:34.10   1st Qu.:-118.35   1st Qu.: 19.00   
+##  TRUE :8389       Median :40.64   Median : -77.04   Median : 33.00   
+##                   Mean   :38.34   Mean   : -93.84   Mean   : 50.64   
+##                   3rd Qu.:40.75   3rd Qu.: -73.96   3rd Qu.: 64.00   
+##                   Max.   :42.39   Max.   : -71.00   Max.   :605.00   
+##  review_scores_rating    bedrooms           beds          priceratio     
+##  Min.   : 58.00       Min.   : 0.000   Min.   : 0.000   Min.   :   7.29  
+##  1st Qu.: 92.00       1st Qu.: 1.000   1st Qu.: 1.000   1st Qu.:  52.59  
+##  Median : 95.00       Median : 1.000   Median : 1.000   Median :  77.14  
+##  Mean   : 94.28       Mean   : 1.268   Mean   : 1.841   Mean   : 100.05  
+##  3rd Qu.: 98.00       3rd Qu.: 1.000   3rd Qu.: 2.000   3rd Qu.: 119.18  
+##  Max.   :100.00       Max.   :10.000   Max.   :18.000   Max.   :1423.76</code></pre>
+</div>
+<div id="훨씬-깔끔하다" class="section level2">
+<h2>훨씬 깔끔하다!</h2>
+</div>
+</div>
+<div id="problem-1.-가격비의-평균과-표준편차-구하기" class="section level1">
+<h1>Problem 1. 가격비의 평균과 표준편차 구하기</h1>
+<pre class="r"><code>#mean
+data$priceratio %&gt;% mean</code></pre>
+<pre><code>## [1] 100.0486</code></pre>
+<pre class="r"><code>#sd
+data$priceratio %&gt;% sd</code></pre>
+<pre><code>## [1] 83.8321</code></pre>
+</div>
+<div id="problem-2.-가격비를-y변수로-선형회귀분석" class="section level1">
+<h1>Problem 2. 가격비를 y변수로 선형회귀분석</h1>
+<pre class="r"><code>lm1 = lm(priceratio~., data = data)
+step_used1 &lt;- step(lm1, direction = &#39;both&#39;)
+plot(step_used1, which = 1)</code></pre>
+<p><img src="/post/2020-06-17-linear-regression_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre class="r"><code>plot(step_used1, which = 2) </code></pre>
+<p><img src="/post/2020-06-17-linear-regression_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+<div id="등분산성과-정규성을-충족하지-못하는-것으로-보이므로-y변수에-대해-log변환을-실시하였다." class="section level2">
+<h2>등분산성과 정규성을 충족하지 못하는 것으로 보이므로, y변수에 대해 log변환을 실시하였다.</h2>
+<pre class="r"><code>lm2 = lm(log(priceratio)~., data = data)
+step_used2 = step(lm2, direction = &quot;both&quot;)</code></pre>
+<pre><code>## Start:  AIC=-53791.28
+## log(priceratio) ~ city + property_type + room_type + amenities + 
+##     accommodates + bathrooms + bed_type + cancellation_policy + 
+##     cleaning_fee + host_has_profile_pic + host_identity_verified + 
+##     host_response_rate + instant_bookable + latitude + longitude + 
+##     number_of_reviews + review_scores_rating + bedrooms + beds
+## 
+##                          Df Sum of Sq    RSS    AIC
+## - host_has_profile_pic    1      0.05 3784.5 -53793
+## - number_of_reviews       1      0.23 3784.7 -53792
+## &lt;none&gt;                                3784.4 -53791
+## - host_identity_verified  1      0.32 3784.8 -53791
+## - cleaning_fee            1      0.37 3784.8 -53791
+## - latitude                1      0.52 3785.0 -53790
+## - bed_type                1      1.25 3785.7 -53784
+## - instant_bookable        1      5.99 3790.4 -53750
+## - host_response_rate      1      6.22 3790.7 -53749
+## - property_type           2     10.95 3795.4 -53716
+## - amenities               1     13.27 3797.7 -53698
+## - beds                    1     22.13 3806.6 -53634
+## - cancellation_policy     4     24.02 3808.5 -53627
+## - bathrooms               1     75.01 3859.4 -53258
+## - accommodates            1    130.52 3915.0 -52869
+## - review_scores_rating    1    131.42 3915.9 -52862
+## - bedrooms                1    200.92 3985.4 -52383
+## - longitude               1    244.81 4029.2 -52084
+## - city                    5    292.37 4076.8 -51772
+## - room_type               2   1735.16 5519.6 -43504
+## 
+## Step:  AIC=-53792.92
+## log(priceratio) ~ city + property_type + room_type + amenities + 
+##     accommodates + bathrooms + bed_type + cancellation_policy + 
+##     cleaning_fee + host_identity_verified + host_response_rate + 
+##     instant_bookable + latitude + longitude + number_of_reviews + 
+##     review_scores_rating + bedrooms + beds
+## 
+##                          Df Sum of Sq    RSS    AIC
+## - number_of_reviews       1      0.23 3784.7 -53793
+## &lt;none&gt;                                3784.5 -53793
+## - host_identity_verified  1      0.31 3784.8 -53793
+## - cleaning_fee            1      0.37 3784.9 -53792
+## + host_has_profile_pic    1      0.05 3784.4 -53791
+## - latitude                1      0.52 3785.0 -53791
+## - bed_type                1      1.25 3785.7 -53786
+## - instant_bookable        1      5.98 3790.5 -53752
+## - host_response_rate      1      6.22 3790.7 -53750
+## - property_type           2     10.94 3795.4 -53718
+## - amenities               1     13.26 3797.7 -53700
+## - beds                    1     22.10 3806.6 -53636
+## - cancellation_policy     4     24.01 3808.5 -53628
+## - bathrooms               1     75.00 3859.5 -53260
+## - accommodates            1    130.51 3915.0 -52870
+## - review_scores_rating    1    131.42 3915.9 -52864
+## - bedrooms                1    200.87 3985.4 -52385
+## - longitude               1    244.76 4029.3 -52086
+## - city                    5    292.34 4076.8 -51774
+## - room_type               2   1735.25 5519.7 -43505
+## 
+## Step:  AIC=-53793.28
+## log(priceratio) ~ city + property_type + room_type + amenities + 
+##     accommodates + bathrooms + bed_type + cancellation_policy + 
+##     cleaning_fee + host_identity_verified + host_response_rate + 
+##     instant_bookable + latitude + longitude + review_scores_rating + 
+##     bedrooms + beds
+## 
+##                          Df Sum of Sq    RSS    AIC
+## - host_identity_verified  1      0.26 3785.0 -53793
+## &lt;none&gt;                                3784.7 -53793
+## - cleaning_fee            1      0.33 3785.0 -53793
+## + number_of_reviews       1      0.23 3784.5 -53793
+## + host_has_profile_pic    1      0.05 3784.7 -53792
+## - latitude                1      0.54 3785.3 -53791
+## - bed_type                1      1.26 3786.0 -53786
+## - instant_bookable        1      6.13 3790.9 -53751
+## - host_response_rate      1      6.42 3791.1 -53749
+## - property_type           2     11.08 3795.8 -53718
+## - amenities               1     13.17 3797.9 -53701
+## - beds                    1     22.15 3806.9 -53636
+## - cancellation_policy     4     23.86 3808.6 -53630
+## - bathrooms               1     75.39 3860.1 -53257
+## - accommodates            1    130.32 3915.0 -52872
+## - review_scores_rating    1    131.86 3916.6 -52861
+## - bedrooms                1    202.76 3987.5 -52372
+## - longitude               1    244.61 4029.3 -52088
+## - city                    5    292.26 4077.0 -51775
+## - room_type               2   1735.94 5520.7 -43503
+## 
+## Step:  AIC=-53793.4
+## log(priceratio) ~ city + property_type + room_type + amenities + 
+##     accommodates + bathrooms + bed_type + cancellation_policy + 
+##     cleaning_fee + host_response_rate + instant_bookable + latitude + 
+##     longitude + review_scores_rating + bedrooms + beds
+## 
+##                          Df Sum of Sq    RSS    AIC
+## &lt;none&gt;                                3785.0 -53793
+## + host_identity_verified  1      0.26 3784.7 -53793
+## - cleaning_fee            1      0.30 3785.3 -53793
+## + number_of_reviews       1      0.18 3784.8 -53793
+## + host_has_profile_pic    1      0.04 3784.9 -53792
+## - latitude                1      0.53 3785.5 -53792
+## - bed_type                1      1.25 3786.2 -53786
+## - instant_bookable        1      6.39 3791.4 -53749
+## - host_response_rate      1      6.41 3791.4 -53749
+## - property_type           2     11.06 3796.0 -53718
+## - amenities               1     13.59 3798.6 -53698
+## - beds                    1     22.14 3807.1 -53636
+## - cancellation_policy     4     24.12 3809.1 -53628
+## - bathrooms               1     75.35 3860.3 -53258
+## - accommodates            1    130.31 3915.3 -52872
+## - review_scores_rating    1    132.34 3917.3 -52858
+## - bedrooms                1    202.74 3987.7 -52373
+## - longitude               1    244.67 4029.7 -52087
+## - city                    5    292.01 4077.0 -51777
+## - room_type               2   1735.79 5520.8 -43504</code></pre>
+<pre class="r"><code>summary(step_used2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(priceratio) ~ city + property_type + room_type + 
+##     amenities + accommodates + bathrooms + bed_type + cancellation_policy + 
+##     cleaning_fee + host_response_rate + instant_bookable + latitude + 
+##     longitude + review_scores_rating + bedrooms + beds, data = data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.55964 -0.23796 -0.00661  0.23018  2.59788 
+## 
+## Coefficients:
+##                                      Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept)                        -7.807e+01  2.291e+00  -34.072  &lt; 2e-16 ***
+## cityChicago                        -1.825e+01  4.346e-01  -42.007  &lt; 2e-16 ***
+## cityDC                             -6.337e+00  1.976e-01  -32.062  &lt; 2e-16 ***
+## cityLA                             -5.136e+01  1.278e+00  -40.189  &lt; 2e-16 ***
+## cityNYC                            -2.991e+00  9.496e-02  -31.496  &lt; 2e-16 ***
+## citySF                             -5.601e+01  1.358e+00  -41.257  &lt; 2e-16 ***
+## property_typeHouse                 -4.532e-02  5.979e-03   -7.579 3.59e-14 ***
+## property_typeOther                  1.715e-02  7.317e-03    2.344  0.01909 *  
+## room_typePrivate room              -5.860e-01  5.715e-03 -102.531  &lt; 2e-16 ***
+## room_typeShared room               -1.108e+00  1.687e-02  -65.679  &lt; 2e-16 ***
+## amenities                           3.494e-03  3.533e-04    9.889  &lt; 2e-16 ***
+## accommodates                        6.676e-02  2.180e-03   30.625  &lt; 2e-16 ***
+## bathrooms                           1.172e-01  5.034e-03   23.288  &lt; 2e-16 ***
+## bed_typeOther                      -4.160e-02  1.389e-02   -2.995  0.00275 ** 
+## cancellation_policymoderate         3.002e-02  7.566e-03    3.968 7.26e-05 ***
+## cancellation_policystrict           7.549e-02  7.255e-03   10.405  &lt; 2e-16 ***
+## cancellation_policysuper_strict_30  4.078e-01  7.103e-02    5.742 9.48e-09 ***
+## cancellation_policysuper_strict_60  6.674e-01  2.641e-01    2.527  0.01152 *  
+## cleaning_feeTRUE                   -9.666e-03  6.614e-03   -1.462  0.14389    
+## host_response_rate                 -1.568e-01  2.309e-02   -6.791 1.13e-11 ***
+## instant_bookableTRUE               -3.420e-02  5.043e-03   -6.782 1.21e-11 ***
+## latitude                            6.594e-02  3.363e-02    1.961  0.04994 *  
+## longitude                          -1.097e+00  2.614e-02  -41.964  &lt; 2e-16 ***
+## review_scores_rating                1.614e-02  5.230e-04   30.862  &lt; 2e-16 ***
+## bedrooms                            1.651e-01  4.322e-03   38.200  &lt; 2e-16 ***
+## beds                               -3.995e-02  3.164e-03  -12.624  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3727 on 27242 degrees of freedom
+## Multiple R-squared:  0.6468, Adjusted R-squared:  0.6464 
+## F-statistic:  1995 on 25 and 27242 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="r2가-0.6468으로.-나름-괜찮아-보인다." class="section level2">
+<h2>R^2가 0.6468으로. 나름 괜찮아 보인다.</h2>
+<pre class="r"><code>plot(step_used2, which = 1)</code></pre>
+<p><img src="/post/2020-06-17-linear-regression_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre class="r"><code>plot(step_used2, which = 2) </code></pre>
+<p><img src="/post/2020-06-17-linear-regression_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+</div>
+<div id="등분산성성과-정규성이-이전보다-더-충족되어-보인다." class="section level2">
+<h2>등분산성성과 정규성이 이전보다 더 충족되어 보인다.</h2>
+</div>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    &copy; Taihwan Oh 2020
+
+    
+
+    
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+  
+
+  
+</body>
+</html>

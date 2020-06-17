@@ -1,0 +1,153 @@
+---
+title: Linear Regression
+author: 오태환
+date: '2020-06-17'
+slug: linear-regression
+categories: [Datamining]
+tags: ["Datamining", "Machine Learning", "R"]
+description: ''
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Cleaning data
+
+airbnb 데이터를 활용해 선형회귀분석을 해보자
+
+## Importing data
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+```{r}
+setwd("C:/Users/dhxog/Desktop/4-1학기/데이터마이닝")
+data <- readxl::read_xlsx("airbnb.xlsx")
+summary(data)
+```
+
+## Changing variables
+### a. number_of_reviews 11이상만
+```{r}
+
+data <- data %>%
+  filter(data$number_of_reviews >= 11)
+```
+### b. amenities를 ","를 기준으로 나누고, 나뉜 갯수(편의용품 갯수)로 바꾸기
+
+```{r}
+temp <- data$amenities %>% strsplit(split = ",") %>% summary()
+data$amenities <- as.numeric(temp[,1])
+```
+### c. 가격비 변수 만들기
+
+```{r}
+mean_bycity = data %>% 
+  group_by(city) %>%
+  summarise(mbc = mean(exp(log_price)))
+
+data <- merge(data, mean_bycity)
+data = data %>% 
+  mutate(priceratio = exp(log_price) / mbc * 100)
+```
+### d. 회귀분석과 관련 없는 변수 or y변수 생성에 쓰인 변수 등 빼기
+
+```{r}
+data = subset(data, select = c(-id,-log_price,
+-description, -first_review, -host_since, -last_review, -name,
+-neighbourhood, -thumbnail_url,-zipcode,-mbc ))
+```
+### e. NA 다루기
+
+#### 일단 칼럼별 NA의 비율을 구하자
+
+```{r}
+nas = rep(0, length(data[1,]))
+for(i in 1:length(data[1,])){
+  nas[i] = sum(is.na(data[,i]))
+  colname = names(data)
+  print(paste(colname[i],  ":" , round(nas[i]/nrow(data)*100, digits = 2), "%"))
+} 
+```
+## NA의 비율이 상당히 낮기 때문에 빼기로 결정
+
+```{r}
+data <- data %>% na.omit()
+```
+### f. property_type 변환
+
+```{r}
+data$property_type[data$property_type != "Apartment" & data$property_type != "House"] = "Other"
+```
+### g. bed_type 변환
+
+```{r}
+data$bed_type[data$bed_type != "Real Bed"] = "Other"
+data$bed_type[data$bed_type == "Real Bed"] = "Bed"
+```
+### h. instant_bookable 변환
+
+```{r}
+data$instant_bookable[data$instant_bookable=="t"] = as.logical(TRUE)
+data$instant_bookable[data$instant_bookable=="f"] = as.logical(FALSE)
+data$instant_bookable <- as.logical(data$instant_bookable)
+```
+### i. host_identity_verified 변환
+
+```{r}
+data$host_identity_verified[data$host_identity_verified=='t'] = TRUE
+data$host_identity_verified[data$host_identity_verified=='f'] = FALSE
+data$host_identity_verified <- as.logical(data$host_identity_verified)
+```
+### j. host_has_profile_pic 변환
+
+```{r}
+data$host_has_profile_pic[data$host_has_profile_pic=='t'] = as.logical(TRUE)
+data$host_has_profile_pic[data$host_has_profile_pic=='f'] = as.logical(FALSE)
+data$host_has_profile_pic <- as.logical(data$host_has_profile_pic)
+```
+
+## 변환 결과
+
+```{r}
+str(data)
+summary(data)
+
+```
+## 훨씬 깔끔하다!
+
+# Problem 1. 가격비의 평균과 표준편차 구하기
+
+```{r}
+#mean
+data$priceratio %>% mean
+#sd
+data$priceratio %>% sd
+```
+
+
+# Problem 2. 가격비를 y변수로 선형회귀분석
+```{r, results='hide'}
+lm1 = lm(priceratio~., data = data)
+step_used1 <- step(lm1, direction = 'both')
+plot(step_used1, which = 1)
+plot(step_used1, which = 2) 
+```
+
+## 등분산성과 정규성을 충족하지 못하는 것으로 보이므로, y변수에 대해 log변환을 실시하였다.
+```{r}
+lm2 = lm(log(priceratio)~., data = data)
+step_used2 = step(lm2, direction = "both")
+summary(step_used2)
+```
+## R^2가 0.6468으로. 나름 괜찮아 보인다.
+
+```{r}
+
+plot(step_used2, which = 1)
+plot(step_used2, which = 2) 
+```
+
+## 등분산성성과 정규성이 이전보다 더 충족되어 보인다.

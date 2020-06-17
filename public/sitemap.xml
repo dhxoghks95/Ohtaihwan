@@ -8,7 +8,27 @@
   </url>
   
   <url>
+    <loc>/tags/datamining/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/datamining/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/eda/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/06/17/linear-regression/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/machine-learning/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   

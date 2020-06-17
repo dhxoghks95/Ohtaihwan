@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on 오! 데이터 사이언스</title>
-    <link>/tags/r/</link>
-    <description>Recent content in R on 오! 데이터 사이언스</description>
+    <title>Datamining on 오! 데이터 사이언스</title>
+    <link>/categories/datamining/</link>
+    <description>Recent content in Datamining on 오! 데이터 사이언스</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/datamining/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       <guid>/2020/06/17/linear-regression/</guid>
       <description>Cleaning dataairbnb 데이터를 활용해 선형회귀분석을 해보자
 Importing datalibrary(tidyverse)setwd(&amp;quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&amp;quot;)data &amp;lt;- readxl::read_xlsx(&amp;quot;airbnb.</description>
-    </item>
-    
-    <item>
-      <title>Preprocessing &amp; EDA</title>
-      <link>/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/</link>
-      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/</guid>
-      <description>Preprocessing &amp;amp; EDA파생변수 생성title_song 생성Idea : 높은 인기로 인해 음원차트에 2곡 이상의 곡을 진입시킨 가수들이 있다.</description>
     </item>
     
   </channel>
