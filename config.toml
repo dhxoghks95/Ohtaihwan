@@ -1,6 +1,6 @@
 baseurl = "https://ohdata.netlify.app/"
 languageCode = "en-us"
-title = "A Hugo website"
+title = "오! 데이터 사이언스"
 theme = "soho"
 googleAnalytics = ""
 disqusShortname = ""
@@ -23,7 +23,7 @@ enableEmoji = true
 [params]
     author = "Taihwan Oh"
     description = "Oh! Blog"
-    
+    profilePicture = "images/images.png"
     copyright = "Taihwan Oh"
     
     # options for highlight.js (version, additional languages, and theme)
