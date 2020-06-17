@@ -1,7 +1,7 @@
 baseurl = "https://ohdata.netlify.app/"
 languageCode = "en-us"
 title = "A Hugo website"
-theme = "Soho"
+theme = "soho"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
