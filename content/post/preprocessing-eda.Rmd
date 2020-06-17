@@ -87,16 +87,18 @@ library(tidyverse)
 library(plotly)
 sge = read_csv('data/eda_data_season_genre.csv')
 
+
+plot_ly(sge, x = ~season, y = ~ seasonal_mean, color = ~genre, type = "scatter",mode = 'markers+lines') 
+
 ```
 
 계절별 변동이 확실하게 보인다
 
 - season_genre_score 만들기
-```{r}
+```{r, message=F,warning=F}
 library(knitr)
 kable(sge)
 
-plot_ly(sge, x = ~season, y = ~ seasonal_mean, color = ~genre, type = "scatter",mode = 'markers+lines') 
 ```
 
 이런 식으로 장르별 계절별 평균 rank_g를 구한 뒤
