@@ -1,0 +1,89 @@
+---
+title: Decision Tree
+author: 오태환
+date: '2020-06-17'
+slug: decision-tree
+categories: [Datamining]
+tags: ["Datamining", "R", "Machine Learning"]
+description: ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 0) Importing Packages &  Data 
+
+```{r, warning=FALSE}
+library(tidyverse)
+library(pROC)
+library(rpart)
+library(plot3D)
+
+data = read_csv("data/baseball.csv")
+head(data)
+```
+## 이 데이터는 메이저리그 팀들의 기록과 플레이오프 진출 여부를 포함한 데이터이다. 그 중 의미있는 X변수들을 뽑아 플레이오프 진출 여부를 classifying 해보겠다. 당연히 승수(Win), 득점(RS), 실점(RA)는 상관관계가 굉장히 높을 것으로 예상되므로, 트리를 좀 더 키워서 연습해보기 위해 이 변수들은 제거하였다.
+```{r}
+data = data %>% select(c("Playoffs", "OBP", "SLG", "BA", "OOBP", "OSLG"))
+```
+## OBP는 출루율, SLG는 장타율, BA는 타율, OOBP는 피출루율, OSLG는 피장타율을 나타낸다.
+
+# 1) Train - Test split
+```{r}
+set.seed(2026)
+nobs = nrow(data)
+
+train_ind = sample(1:nobs, round(nobs * 0.5))
+
+train = data[train_ind,]
+test = data[-train_ind,]
+
+```
+
+# 2) Decision Tree & AUROC 계산
+```{r}
+minsplit = seq(1,46,by=5)
+cp = seq(0.001, 0.01, by = 0.001)
+mcr = matrix(NA, nrow = length(minsplit), ncol = length(cp))
+mcrdf = data.frame()
+
+for(i in 1:10){
+   
+  for(j in 1:10){
+    m = minsplit[i]
+    c = cp[j] 
+    my.control = rpart.control(minsplit = m, cp = c, xval = 0)
+    tree = rpart(Playoffs~., data = train, method = "class", control = my.control)
+    pred = predict(tree, newdata = test, type = "prob")
+    roccurve0 = roc(test$Playoffs ~ pred[,2])
+
+    auc = roccurve0$auc %>% as.numeric()
+    
+    mcr[i,j] = auc
+    mcrdf = rbind(mcrdf, c(m,c,auc))
+  }
+   
+}
+```
+
+# 3) 3D Surface Graph
+```{r}
+persp3D(minsplit, cp, mcr,theta=30, phi=50, axes=TRUE,scale= 0.75, box=TRUE, nticks=5, 
+
+        ticktype="detailed", xlab = "minsplit", ylab= "cp", zlab = "AUROC")
+
+colnames(mcrdf) = c("minsplit", "cp", "AUC")
+```
+
+### 그래프를 봤을 때, minsplit 10근처, cp 0.008~0.010 사이에 짙은 적색으로 표현되는 최댓값이 위치하는 것으로 보인다.
+
+# 4) AUC를 max로 하는 minsplit과 cp 찾기
+```{r}
+df = mcrdf %>%
+  filter(AUC == max(AUC))
+
+print(df)
+```
+
+## 그래프에서 볼 수 있듯, minsplit 11과 cp 0.009, 0.010에서 가장 좋은 AUC가 나오게 된다.

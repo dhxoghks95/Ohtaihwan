@@ -1,0 +1,126 @@
+---
+title: Random Forest
+author: 오태환
+date: '2020-06-17'
+slug: random-forest
+categories: [Datamining]
+tags: ["R", "Datamining", "Decision Tree"]
+description: ''
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 0) Importing Packages &  Data , EDA
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(pROC)
+library(randomForest)
+library(plot3D)
+
+
+data = read_csv("data/pulsar_stars.csv")
+head(data)
+```
+
+## 이 데이터는 Pulsar Star를 찾는 데이터셋이다. Pulsar star란 전자기파 광선을 뿜는 자전하는 중성자별이라고 한다. target_class가 1이면 Pulsar star고 0이면 일반 별이다.
+```{r}
+skimr::skim(data)
+```
+
+
+## 0-1) Random Forest를 위해 변수명을 바꾸는 작업이 필요하다.
+```{r}
+colnames(data) = c("Mean_of_the_integrated_profile","Standard_deviation_of_the_integrated_profile",
+                   "Excess_kurtosis_of_the_integrated_profile","Skewness_of_the_integrated_profile",
+                   "Mean_of_the_DM_SNR_curve","Standard_deviation_of_the_DM_SNR_curve",
+                   "Excess_kurtosis_of_the_DM_SNR_curve","Skewness_of_the_DM_SNR_curve","target_class" )
+
+```
+
+## 0-2) Random Forest를 위해 target_class 변수를 factor로 바꿔주자
+
+```{r}
+
+data$target_class = as.factor(data$target_class)
+
+```
+
+# 1) Train-Test Split
+
+```{r}
+
+set.seed(0226)
+star_split <- rsample::initial_split(data, prop = 0.5, strata = target_class)
+
+train <- training(star_split)
+test <- testing(star_split)
+
+print(nrow(train))
+print(nrow(test))
+
+```
+
+# 2) Random Forest Modeling
+
+```{r, message=FALSE, warning=FALSE}
+p = ncol(train) - 1 # class 뺀 X변수들의 숫자
+n = nrow(train)
+
+mtry = floor(seq(0.1, 1, by = 0.1) * p) 
+nsize = round(c(1, n * seq(0.01, 0.1, by = 0.01)))
+
+pna = matrix(NA, nrow = length(mtry), ncol = length(nsize))
+pnadf = data.frame()
+
+for( i in 1:length(mtry)){
+  for( j in 1:length(nsize)){
+    m = mtry[i]
+    n = nsize[j]
+    rf = randomForest(target_class~., 
+                      data = train, ntree = 100, mtry = m, 
+                      nodesize = n, set.seed(0226))
+    pred = predict(rf, newdata = test, type = 'prob')
+    
+    roccurve0 = roc(test$target_class ~ pred[,2])
+
+    auc = roccurve0$auc %>% as.numeric()
+    
+    pna[i,j] = auc
+    pnadf = rbind(pnadf, c(m,n,auc))
+  }
+}
+
+rownames(pna) = mtry
+colnames(pna) = nsize
+
+pna
+```
+
+### randomForest 과정중에 반복되는 메세지와 경고가 출력되어 rmarkdown에 message=FALSE, warning=FALSE를 주어 생략하였다.
+
+### 위와 같은 mtrym nodesize auc 조합이 만들어졌다.
+
+# 3) 3D Surface Graph
+```{r}
+persp3D(mtry, nsize, pna, theta=110, phi=30, axes=TRUE,scale= 0.75, box=TRUE, nticks=5, 
+
+        ticktype="detailed", xlab = "mtry", ylab= "nodesize", zlab = "AUROC")
+
+colnames(pnadf) = c("mtry", "nodesize", "AUC")
+```
+### 그래프를 봤을 때, nodesize가 200 이하이고, mtry 가 5인 지점에서 가장 짙은 적색이 보이며 AUC 약 0.97로 가장 높아보인다.
+
+# 4) AUC를 max로 하는 mtry과 nodesize 찾기
+```{r}
+df = pnadf %>%
+  filter(AUC == max(AUC))
+
+print(df)
+```
+
+### 그래프에서 봤던 대로 mtry가 5이고 nodesize가 1인 지점에서 AUC 약 0.968로 가장 높았다.

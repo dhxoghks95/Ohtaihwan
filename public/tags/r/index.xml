@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Decision Tree</title>
+      <link>/2020/06/17/decision-tree/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/06/17/decision-tree/</guid>
+      <description>0) Importing Packages &amp;amp; Datalibrary(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.</description>
+    </item>
+    
+    <item>
       <title>Linear Regression</title>
       <link>/2020/06/17/linear-regression/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
@@ -28,6 +37,15 @@ Importing datalibrary(tidyverse)setwd(&amp;quot;C:/Users/dhxog/Desktop/4-1학�
       
       <guid>/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/</guid>
       <description>Preprocessing &amp;amp; EDA파생변수 생성title_song 생성Idea : 높은 인기로 인해 음원차트에 2곡 이상의 곡을 진입시킨 가수들이 있다.</description>
+    </item>
+    
+    <item>
+      <title>Random Forest</title>
+      <link>/2020/06/17/random-forest/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/06/17/random-forest/</guid>
+      <description>0) Importing Packages &amp;amp; Data , EDAlibrary(tidyverse)## Warning: 패키지 &amp;#39;tidyverse&amp;#39;는 R 버전 3.</description>
     </item>
     
   </channel>

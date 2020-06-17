@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Decision Tree</title>
+      <link>/2020/06/17/decision-tree/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/06/17/decision-tree/</guid>
+      <description>0) Importing Packages &amp;amp; Datalibrary(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.</description>
+    </item>
+    
+    <item>
       <title>Linear Regression</title>
       <link>/2020/06/17/linear-regression/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>

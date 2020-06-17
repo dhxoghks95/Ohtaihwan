@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Decision Tree on 오! 데이터 사이언스</title>
+    <link>/tags/decision-tree/</link>
+    <description>Recent content in Decision Tree on 오! 데이터 사이언스</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/decision-tree/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Random Forest</title>
+      <link>/2020/06/17/random-forest/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/06/17/random-forest/</guid>
+      <description>0) Importing Packages &amp;amp; Data , EDAlibrary(tidyverse)## Warning: 패키지 &amp;#39;tidyverse&amp;#39;는 R 버전 3.</description>
+    </item>
+    
+  </channel>
+</rss>
