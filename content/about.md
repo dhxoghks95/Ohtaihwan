@@ -90,6 +90,7 @@ ESC 2019-FALL 학회 주제. Conjugate Prior, Gibbs Sampler, Bayesian Imputation
 `Python` `Machine Learning`
 
 [GitHub Link](https://github.com/YonseiESC/ESC-20WINTER) <br>
+
 [2020_SUMMER Machine Learning Study](https://github.com/dhxoghks95/ESC_2020SUMMER_ML) <br>
 
 ESC 2020-Winter 학회 주제. "Introduction to Statistical Learning", "Python Data Science" 교재를 통해 머신러닝과 파이썬 프로그래밍 공부
