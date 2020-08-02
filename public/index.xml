@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Resume</title>
+      <link>/about/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Portfolio ⚾ About me  Name : 오태환 E-mail: dhxoghks95@gmail.com Tel: 010-8551-5747 사용 가능 언어: R, Python 사용 가능 DBMS: Oracle 연세대학교 응용통계학과 4학년 선사고등학교 졸업 연세대학교 응용통계학과 4학년 재학중 연세대학교 통계 및 데이터사이언스 학회 ESC 22기 (2019.</description>
+    </item>
+    
+    <item>
       <title>Decision Tree</title>
       <link>/2020/06/17/decision-tree/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
@@ -46,15 +55,6 @@ Importing datalibrary(tidyverse)setwd(&amp;quot;C:/Users/dhxog/Desktop/4-1학�
       
       <guid>/2020/06/17/random-forest/</guid>
       <description>0) Importing Packages &amp;amp; Data , EDAlibrary(tidyverse)## Warning: 패키지 &amp;#39;tidyverse&amp;#39;는 R 버전 3.</description>
-    </item>
-    
-    <item>
-      <title>Resume</title>
-      <link>/about/</link>
-      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Portfolio ⚾ About me  Name : 오태환 E-mail: dhxoghks95@gmail.com Tel: 010-8551-5747 사용 가능 언어: R, Python, Oracle 연세대학교 응용통계학과 4학년 사용 가능 DBMS: Oracle 선사고등학교 졸업 연세대학교 응용통계학과 4학년 재학중 연세대학교 통계 및 데이터사이언스 학회 ESC 22기 (2019.</description>
     </item>
     
   </channel>
