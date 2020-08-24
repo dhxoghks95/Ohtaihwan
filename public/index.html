@@ -1,197 +1,941 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.72.0" />
+<!DOCTYPE HTML>
 
-  <title>오! 데이터 사이언스</title>
+<html>
+    <head>
+        <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "\/"
+        },
+        "articleSection" : "",
+        "name" : "오! 데이터 사이언스",
+        "headline" : "오! 데이터 사이언스",
+        "description" : "",
+        "inLanguage" : "en",
+        "author" : "",
+        "creator" : "",
+        "publisher": "",
+        "accountablePerson" : "",
+        "copyrightHolder" : "",
+        "copyrightYear" : "2020",
+        "datePublished": "2020-06-17 00:00:00 \u002b0000 UTC",
+        "dateModified" : "2020-06-17 00:00:00 \u002b0000 UTC",
+        "url" : "\/",
+        "wordCount" : "0",
+        "keywords" : [ "Blog" ]
+    }
+    </script>
+        
+            
+                <title>오! 데이터 사이언스</title>
+            
+        
 
-  <meta name="description" content="Oh! Blog" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.72.0" />
+        
 
-  
 
-<meta itemprop="name" content="오! 데이터 사이언스">
-<meta itemprop="description" content="Oh! Blog">
+        
+        
+            
+                <meta name="description" content="Oh! Blog">
+            
+        
 
-<meta name="twitter:card" content="summary"/>
+        <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="오! 데이터 사이언스"/>
 <meta name="twitter:description" content="Oh! Blog"/>
 
-
-<meta property="og:title" content="오! 데이터 사이언스" />
+        <meta property="og:title" content="오! 데이터 사이언스" />
 <meta property="og:description" content="Oh! Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
 <meta property="og:updated_time" content="2020-06-17T00:00:00+00:00" />
 
-
-
-  <link type="text/css"
-        rel="stylesheet"
-        href="/css/print.css"
-        media="print">
-
-  <link type="text/css"
-        rel="stylesheet"
-        href="/css/poole.css">
-
-  <link type="text/css"
-        rel="stylesheet"
-        href="/css/hyde.css">
-
-  
-
-
-  
-
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
-
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
-        crossorigin="anonymous" />
-
-  <link rel="apple-touch-icon-precomposed"
-        sizes="144x144"
-        href="/apple-touch-icon-144-precomposed.png">
-
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="오! 데이터 사이언스" />
-  </head>
-<body>
-  <aside class="sidebar">
-  <div class="container">
-    <div class="sidebar-about">
-      
+        <meta property="og:image" content="//images/logo.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        <meta itemprop="name" content="오! 데이터 사이언스">
+<meta itemprop="description" content="Oh! Blog">
         
-      
 
-      <h1>오! 데이터 사이언스</h1>
+        
+            
+        
 
-      
-      <p class="lead">Oh! Blog</p>
-      
-    </div>
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+            <link rel="stylesheet" href="/css/academicons.min.css">
+        
 
-    <nav>
-      <ul class="sidebar-nav">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/about/">About</a>
-        </li><li>
-          <a href="https://github.com/dhxoghks95">GitHub</a>
-        </li>
-      </ul>
-    </nav>
-
-    <section class="social-icons">
-      
-    </section>
-  </div>
-</aside>
+        
 
 
-  <main class="content container">
-  <div class="posts">
-      <article class="post">
-        <h1 class="post-title">
-          <a href="/2020/06/17/decision-tree/">Decision Tree</a>
-        </h1>
-
-        <div class="post-date">
-          <time datetime="2020-06-17T00:00:00Z">Jun 17, 2020</time> &middot; 10 min read
-        </div>
-
-        <div>
-          0) Importing Packages &amp; Datalibrary(tidyverse)## -- Attaching packages ------------------------------------------------------ tidyverse 1.
-        </div>
-
-        <div class="read-more-link">
-          <a href="/2020/06/17/decision-tree/">Read More</a>
-        </div>
-      </article>
-      <article class="post">
-        <h1 class="post-title">
-          <a href="/2020/06/17/linear-regression/">Linear Regression</a>
-        </h1>
-
-        <div class="post-date">
-          <time datetime="2020-06-17T00:00:00Z">Jun 17, 2020</time> &middot; 12 min read
-        </div>
-
-        <div>
-          Cleaning dataairbnb 데이터를 활용해 선형회귀분석을 해보자
-Importing datalibrary(tidyverse)setwd(&quot;C:/Users/dhxog/Desktop/4-1학기/데이터마이닝&quot;)data &lt;- readxl::read_xlsx(&quot;airbnb.
-        </div>
-
-        <div class="read-more-link">
-          <a href="/2020/06/17/linear-regression/">Read More</a>
-        </div>
-      </article>
-      <article class="post">
-        <h1 class="post-title">
-          <a href="/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/">Preprocessing &amp; EDA</a>
-        </h1>
-
-        <div class="post-date">
-          <time datetime="2020-06-17T00:00:00Z">Jun 17, 2020</time> &middot; 4 min read
-        </div>
-
-        <div>
-          Preprocessing &amp; EDA파생변수 생성title_song 생성Idea : 높은 인기로 인해 음원차트에 2곡 이상의 곡을 진입시킨 가수들이 있다.
-        </div>
-
-        <div class="read-more-link">
-          <a href="/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/">Read More</a>
-        </div>
-      </article>
-      <article class="post">
-        <h1 class="post-title">
-          <a href="/2020/06/17/random-forest/">Random Forest</a>
-        </h1>
-
-        <div class="post-date">
-          <time datetime="2020-06-17T00:00:00Z">Jun 17, 2020</time> &middot; 6 min read
-        </div>
-
-        <div>
-          0) Importing Packages &amp; Data , EDAlibrary(tidyverse)## Warning: 패키지 &#39;tidyverse&#39;는 R 버전 3.
-        </div>
-
-        <div class="read-more-link">
-          <a href="/2020/06/17/random-forest/">Read More</a>
-        </div>
-      </article>
-  </div>
-
+  
+    
+    <link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
   
 
 
-  </main>
+      
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/"></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://github.com/dhxoghks95">
+                            <i class="">&nbsp;</i>GitHub
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/dhxoghks95">
+                            <h3>
+                                <i class="">&nbsp;</i>GitHub
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section class="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2020/06/17/decision-tree/">Decision Tree</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2020-06-17'>
+                                    June 17, 2020</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2020/06/17/linear-regression/">Linear Regression</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2020-06-17'>
+                                    June 17, 2020</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/post/">Posts</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2020-06-17'>
+                                    June 17, 2020</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/">Preprocessing &amp; EDA</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2020-06-17'>
+                                    June 17, 2020</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/2020/06/17/random-forest/">Random Forest</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2020-06-17'>
+                                    June 17, 2020</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            "/post/"
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+            <article class="post">
+  <header>
+    <div class="title">
+        
+            <h2><a href="/2020/06/17/decision-tree/">Decision Tree</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2020-06-17'>
+            June 17, 2020</time>
+        <span class="author">오태환</span>
+        
+        
+    </div>
+</header>
+
+
+  
+
+  
+
+  <div id="content">
+    
+
+
+<div id="importing-packages-data" class="section level1">
+<h1>0) Importing Packages &amp; Data</h1>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------ tidyverse 1.3.0 --</code></pre>
+<pre><code>## √ ggplot2 3.3.1     √ purrr   0.3.4
+## √ tibble  3.0.1     √ dplyr   1.0.0
+## √ tidyr   1.1.0     √ stringr 1.4.0
+## √ readr   1.3.1     √ forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts --------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(pROC)</code></pre>
+<pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
+<pre><code>## 
+## 다음의 패키지를 부착합니다: &#39;pROC&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     cov, smooth, var</code></pre>
+<pre class="r"><code>library(rpart)
+library(plot3D)
+
+data = read_csv(&quot;data/baseball.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Team = col_character(),
+##   League = col_character(),
+##   Year = col_double(),
+##   RS = col_double(),
+##   RA = col_double(),
+##   W = col_double(),
+##   OBP = col_double(),
+##   SLG = col_double(),
+##   BA = col_double(),
+##   Playoffs = col_double(),
+##   RankSeason = col_double(),
+##   RankPlayoffs = col_double(),
+##   G = col_double(),
+##   OOBP = col_double(),
+##   OSLG = col_double()
+## )</code></pre>
+<pre class="r"><code>head(data)</code></pre>
+<pre><code>## # A tibble: 6 x 15
+##   Team  League  Year    RS    RA     W   OBP   SLG    BA Playoffs RankSeason
+##   &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;
+## 1 ARI   NL      2012   734   688    81 0.328 0.418 0.259        0         NA
+## 2 ATL   NL      2012   700   600    94 0.32  0.389 0.247        1          4
+## 3 BAL   AL      2012   712   705    93 0.311 0.417 0.247        1          5
+## 4 BOS   AL      2012   734   806    69 0.315 0.415 0.26         0         NA
+## 5 CHC   NL      2012   613   759    61 0.302 0.378 0.24         0         NA
+## 6 CHW   AL      2012   748   676    85 0.318 0.422 0.255        0         NA
+## # ... with 4 more variables: RankPlayoffs &lt;dbl&gt;, G &lt;dbl&gt;, OOBP &lt;dbl&gt;,
+## #   OSLG &lt;dbl&gt;</code></pre>
+<div id="이-데이터는-메이저리그-팀들의-기록과-플레이오프-진출-여부를-포함한-데이터이다.-그-중-의미있는-x변수들을-뽑아-플레이오프-진출-여부를-classifying-해보겠다.-당연히-승수win-득점rs-실점ra는-상관관계가-굉장히-높을-것으로-예상되므로-트리를-좀-더-키워서-연습해보기-위해-이-변수들은-제거하였다." class="section level2">
+<h2>이 데이터는 메이저리그 팀들의 기록과 플레이오프 진출 여부를 포함한 데이터이다. 그 중 의미있는 X변수들을 뽑아 플레이오프 진출 여부를 classifying 해보겠다. 당연히 승수(Win), 득점(RS), 실점(RA)는 상관관계가 굉장히 높을 것으로 예상되므로, 트리를 좀 더 키워서 연습해보기 위해 이 변수들은 제거하였다.</h2>
+<pre class="r"><code>data = data %&gt;% select(c(&quot;Playoffs&quot;, &quot;OBP&quot;, &quot;SLG&quot;, &quot;BA&quot;, &quot;OOBP&quot;, &quot;OSLG&quot;))</code></pre>
+</div>
+<div id="obp는-출루율-slg는-장타율-ba는-타율-oobp는-피출루율-oslg는-피장타율을-나타낸다." class="section level2">
+<h2>OBP는 출루율, SLG는 장타율, BA는 타율, OOBP는 피출루율, OSLG는 피장타율을 나타낸다.</h2>
+</div>
+</div>
+<div id="train---test-split" class="section level1">
+<h1>1) Train - Test split</h1>
+<pre class="r"><code>set.seed(2026)
+nobs = nrow(data)
+
+train_ind = sample(1:nobs, round(nobs * 0.5))
+
+train = data[train_ind,]
+test = data[-train_ind,]</code></pre>
+</div>
+<div id="decision-tree-auroc-계산" class="section level1">
+<h1>2) Decision Tree &amp; AUROC 계산</h1>
+<pre class="r"><code>minsplit = seq(1,46,by=5)
+cp = seq(0.001, 0.01, by = 0.001)
+mcr = matrix(NA, nrow = length(minsplit), ncol = length(cp))
+mcrdf = data.frame()
+
+for(i in 1:10){
+   
+  for(j in 1:10){
+    m = minsplit[i]
+    c = cp[j] 
+    my.control = rpart.control(minsplit = m, cp = c, xval = 0)
+    tree = rpart(Playoffs~., data = train, method = &quot;class&quot;, control = my.control)
+    pred = predict(tree, newdata = test, type = &quot;prob&quot;)
+    roccurve0 = roc(test$Playoffs ~ pred[,2])
+
+    auc = roccurve0$auc %&gt;% as.numeric()
+    
+    mcr[i,j] = auc
+    mcrdf = rbind(mcrdf, c(m,c,auc))
+  }
+   
+}</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+<pre><code>## Setting levels: control = 0, case = 1</code></pre>
+<pre><code>## Setting direction: controls &lt; cases</code></pre>
+</div>
+<div id="d-surface-graph" class="section level1">
+<h1>3) 3D Surface Graph</h1>
+<pre class="r"><code>persp3D(minsplit, cp, mcr,theta=30, phi=50, axes=TRUE,scale= 0.75, box=TRUE, nticks=5, 
+
+        ticktype=&quot;detailed&quot;, xlab = &quot;minsplit&quot;, ylab= &quot;cp&quot;, zlab = &quot;AUROC&quot;)</code></pre>
+<p><img src="/post/2020-06-17-decision-tree_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>colnames(mcrdf) = c(&quot;minsplit&quot;, &quot;cp&quot;, &quot;AUC&quot;)</code></pre>
+<div id="그래프를-봤을-때-minsplit-10근처-cp-0.0080.010-사이에-짙은-적색으로-표현되는-최댓값이-위치하는-것으로-보인다." class="section level3">
+<h3>그래프를 봤을 때, minsplit 10근처, cp 0.008~0.010 사이에 짙은 적색으로 표현되는 최댓값이 위치하는 것으로 보인다.</h3>
+</div>
+</div>
+<div id="auc를-max로-하는-minsplit과-cp-찾기" class="section level1">
+<h1>4) AUC를 max로 하는 minsplit과 cp 찾기</h1>
+<pre class="r"><code>df = mcrdf %&gt;%
+  filter(AUC == max(AUC))
+
+print(df)</code></pre>
+<pre><code>##   minsplit    cp       AUC
+## 1       11 0.009 0.7125245
+## 2       11 0.010 0.7125245</code></pre>
+<div id="그래프에서-볼-수-있듯-minsplit-11과-cp-0.009-0.010에서-가장-좋은-auc가-나오게-된다." class="section level2">
+<h2>그래프에서 볼 수 있듯, minsplit 11과 cp 0.009, 0.010에서 가장 좋은 AUC가 나오게 된다.</h2>
+</div>
+</div>
+
+  </div>
 
   <footer>
-  <div>
-    &copy; Taihwan Oh 2020
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+        
+            
+            
+                <i class="fa fa-folder"></i>
+                
+                
+                <li><a class="article-category-link" href="/categories/datamining">Datamining</a></li>
+                
+            
+        
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+        
+            
+            
+                <i class="fa fa-tags"></i>
+                
+                
+                <li><a class="article-category-link" href="/tags/datamining">Datamining</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/r">R</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/machine-learning">Machine Learning</a></li>
+                
+            
+        
+    </ul>
+  </li>
+</ul>
 
+  </footer>
+
+</article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="/2020/06/17/linear-regression/"
+                class="button big previous">Linear Regression</a></li>
     
 
     
-  </div>
-</footer>
+</ul>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
-          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
-          crossorigin="anonymous"></script>
 
+            <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2f2020%2f06%2f17%2fdecision-tree%2f&amp;text=Decision%20Tree&amp;via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2f2020%2f06%2f17%2fdecision-tree%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2f2020%2f06%2f17%2fdecision-tree%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2f2020%2f06%2f17%2fdecision-tree%2f&amp;title=Decision%20Tree" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2f2020%2f06%2f17%2fdecision-tree%2f&amp;title=Decision%20Tree" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2f2020%2f06%2f17%2fdecision-tree%2f&amp;title=Decision%20Tree" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2f2020%2f06%2f17%2fdecision-tree%2f&amp;description=Decision%20Tree" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by %ec%98%a4%ed%83%9c%ed%99%98&amp;body=%2f2020%2f06%2f17%2fdecision-tree%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
+        
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+    
+    
+  </section>
+
+  
+  <section class="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2020/06/17/decision-tree/">Decision Tree</a>
+              </h3>
+              
+              <time class="published" datetime='2020-06-17'>
+                June 17, 2020
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2020/06/17/linear-regression/">Linear Regression</a>
+              </h3>
+              
+              <time class="published" datetime='2020-06-17'>
+                June 17, 2020
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/post/">Posts</a>
+              </h3>
+              
+              <time class="published" datetime='2020-06-17'>
+                June 17, 2020
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2020/06/17/%EC%9D%8C%EC%9B%90%EC%B0%A8%ED%8A%B8-%EC%98%88%EC%B8%A1/">Preprocessing &amp; EDA</a>
+              </h3>
+              
+              <time class="published" datetime='2020-06-17'>
+                June 17, 2020
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/2020/06/17/random-forest/">Random Forest</a>
+              </h3>
+              
+              <time class="published" datetime='2020-06-17'>
+                June 17, 2020
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            "/post/"
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
   
 
   
-</body>
+  
+
+  
+  <section id="footer">
+    
+    <p class="copyright">
+      
+        &copy; 2020
+        
+          Taihwan Oh
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+      
+      
+      
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+        <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+      
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+  </body>
 </html>
+
