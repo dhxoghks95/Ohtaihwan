@@ -1,7 +1,7 @@
 baseurl = "https://ohdata.netlify.app/"
 languageCode = "en-us"
 title = "오! 데이터 사이언스"
-theme = "soho"
+theme = "Hugo Future Imperfect"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
